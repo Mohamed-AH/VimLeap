@@ -1,103 +1,129 @@
 const vimCommands = [
-    { name: 'dd', description: 'Delete current line', category: 'Editing' },
-    { name: 'yy', description: 'Yank (copy) current line', category: 'Editing' },
-    { name: 'p', description: 'Paste after cursor', category: 'Editing' },
+    // Navigation
+    { name: 'h', description: 'Move cursor left', category: 'Navigation' },
+    { name: 'j', description: 'Move cursor down', category: 'Navigation' },
+    { name: 'k', description: 'Move cursor up', category: 'Navigation' },
+    { name: 'l', description: 'Move cursor right', category: 'Navigation' },
+    { name: 'w', description: 'Jump forwards to the start of a word', category: 'Navigation' },
+    { name: 'e', description: 'Jump forwards to the end of a word', category: 'Navigation' },
+    { name: 'b', description: 'Jump backwards to the start of a word', category: 'Navigation' },
+    { name: '0', description: 'Jump to the start of the line', category: 'Navigation' },
+    { name: '^', description: 'Jump to the first non-blank character of the line', category: 'Navigation' },
+    { name: '$', description: 'Jump to the end of the line', category: 'Navigation' },
     { name: 'gg', description: 'Go to the first line of the document', category: 'Navigation' },
     { name: 'G', description: 'Go to the last line of the document', category: 'Navigation' },
+    { name: '5G', description: 'Go to line 5', category: 'Navigation' },
+
+    // Editing
+    { name: 'i', description: 'Insert before the cursor', category: 'Editing' },
+    { name: 'I', description: 'Insert at the beginning of the line', category: 'Editing' },
+    { name: 'a', description: 'Insert (append) after the cursor', category: 'Editing' },
+    { name: 'A', description: 'Insert (append) at the end of the line', category: 'Editing' },
+    { name: 'o', description: 'Append (open) a new line below the current line', category: 'Editing' },
+    { name: 'O', description: 'Append (open) a new line above the current line', category: 'Editing' },
+    { name: 'ea', description: 'Insert (append) at the end of the word', category: 'Editing' },
+    { name: 'Esc', description: 'Exit insert mode', category: 'Editing' },
+
+    // Editing - Deleting
+    { name: 'x', description: 'Delete character', category: 'Editing' },
+    { name: 'dw', description: 'Delete word', category: 'Editing' },
+    { name: 'dd', description: 'Delete line', category: 'Editing' },
+    { name: 'd$', description: 'Delete to the end of the line', category: 'Editing' },
+    { name: 'D', description: 'Delete to the end of the line', category: 'Editing' },
+
+    // Editing - Copying and Pasting
+    { name: 'yy', description: 'Yank (copy) a line', category: 'Editing' },
+    { name: 'yw', description: 'Yank (copy) the characters of the word from the cursor position to the start of the next word', category: 'Editing' },
+    { name: 'y$', description: 'Yank (copy) to end of line', category: 'Editing' },
+    { name: 'p', description: 'Put (paste) the clipboard after cursor', category: 'Editing' },
+    { name: 'P', description: 'Put (paste) before cursor', category: 'Editing' },
+
+    // Editing - Undo and Redo
+    { name: 'u', description: 'Undo', category: 'Editing' },
+    { name: 'Ctrl + r', description: 'Redo', category: 'Editing' },
+
+    // Visual mode
+    { name: 'v', description: 'Start visual mode, mark lines, then do a command (like y-yank)', category: 'Visual Mode' },
+    { name: 'V', description: 'Start linewise visual mode', category: 'Visual Mode' },
+    { name: 'Ctrl + v', description: 'Start visual block mode', category: 'Visual Mode' },
+
+    // Searching
     { name: '/pattern', description: 'Search forward for pattern', category: 'Searching' },
     { name: '?pattern', description: 'Search backward for pattern', category: 'Searching' },
     { name: 'n', description: 'Repeat search in same direction', category: 'Searching' },
     { name: 'N', description: 'Repeat search in opposite direction', category: 'Searching' },
-    { name: ':w', description: 'Save the file', category: 'File Operations' },
-    { name: ':q', description: 'Quit (close window)', category: 'File Operations' },
-    { name: ':wq', description: 'Save and quit', category: 'File Operations' },
+
+    // Search and Replace
+    { name: ':%s/old/new/g', description: 'Replace all old with new throughout file', category: 'Search and Replace' },
+    { name: ':%s/old/new/gc', description: 'Replace all old with new throughout file with confirmations', category: 'Search and Replace' },
+
+    // Working with multiple files
+    { name: ':e filename', description: 'Edit a file in a new buffer', category: 'Multiple Files' },
+    { name: ':bnext or :bn', description: 'Go to the next buffer', category: 'Multiple Files' },
+    { name: ':bprev or :bp', description: 'Go to the previous buffer', category: 'Multiple Files' },
+    { name: ':bd', description: 'Delete a buffer (close a file)', category: 'Multiple Files' },
+    { name: ':sp filename', description: 'Open a file in a new buffer and split window', category: 'Multiple Files' },
+    { name: ':vsp filename', description: 'Open a file in a new buffer and vertically split window', category: 'Multiple Files' },
+    { name: 'Ctrl + ws', description: 'Split window', category: 'Multiple Files' },
+    { name: 'Ctrl + ww', description: 'Switch windows', category: 'Multiple Files' },
+    { name: 'Ctrl + wq', description: 'Quit a window', category: 'Multiple Files' },
+    { name: 'Ctrl + wv', description: 'Split window vertically', category: 'Multiple Files' },
+
+    // Tabs
+    { name: ':tabnew filename', description: 'Open a file in a new tab', category: 'Tabs' },
+    { name: 'Ctrl + wT', description: 'Move the current split window into its own tab', category: 'Tabs' },
+    { name: 'gt or :tabnext', description: 'Move to the next tab', category: 'Tabs' },
+    { name: 'gT or :tabprev', description: 'Move to the previous tab', category: 'Tabs' },
+
+    // File operations
+    { name: ':w', description: 'Write (save) the file, but don't exit', category: 'File Operations' },
+    { name: ':w !sudo tee %', description: 'Write out the current file using sudo', category: 'File Operations' },
+    { name: ':wq or :x or ZZ', description: 'Write (save) and quit', category: 'File Operations' },
+    { name: ':q', description: 'Quit (fails if there are unsaved changes)', category: 'File Operations' },
+    { name: ':q! or ZQ', description: 'Quit and throw away unsaved changes', category: 'File Operations' },
+
+    // Miscellaneous
+    { name: '.', description: 'Repeat last command', category: 'Miscellaneous' },
+    { name: '>>', description: 'Indent line one shift-width', category: 'Miscellaneous' },
+    { name: '<<', description: 'De-indent line one shift-width', category: 'Miscellaneous' },
+    { name: '==', description: 'Auto-indent current line', category: 'Miscellaneous' },
 ];
 
-const categories = [...new Set(vimCommands.map(cmd => cmd.category))];
-
-// Dark mode toggle
-const darkModeToggle = document.getElementById('darkModeToggle');
-darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-});
-
-// Check for saved dark mode preference
-if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark-mode');
+function displayCommands(commands) {
+    const commandResults = document.getElementById('commandResults');
+    commandResults.innerHTML = commands.map(cmd => `
+        <div class="command-card">
+            <div class="command-name">${cmd.name}</div>
+            <div class="command-description">${cmd.description}</div>
+            <div class="command-category">${cmd.category}</div>
+        </div>
+    `).join('');
 }
 
-// Search functionality
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
+document.addEventListener('DOMContentLoaded', () => {
+    displayCommands(vimCommands);
 
-searchInput.addEventListener('input', () => {
-    const searchTerm = searchInput.value.toLowerCase();
-    const filteredCommands = vimCommands.filter(cmd => 
-        cmd.name.toLowerCase().includes(searchTerm) || 
-        cmd.description.toLowerCase().includes(searchTerm)
-    );
-    displaySearchResults(filteredCommands);
-});
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const searchInput = document.getElementById('searchInput');
 
-function displaySearchResults(commands) {
-    searchResults.innerHTML = commands.map(cmd => 
-        `<p><strong>${cmd.name}</strong>: ${cmd.description}</p>`
-    ).join('');
-}
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
 
-// Categories
-const categoryList = document.getElementById('categoryList');
-categories.forEach(category => {
-    const li = document.createElement('li');
-    li.textContent = category;
-    categoryList.appendChild(li);
-});
-
-// Daily challenge
-const challengeDescription = document.getElementById('challengeDescription');
-const challengeSolution = document.getElementById('challengeSolution');
-const revealSolution = document.getElementById('revealSolution');
-
-function loadDailyChallenge() {
-    // In a real app, this would be fetched from a server
-    const challenge = {
-        description: "Delete the first 3 lines of a file",
-        solution: "3dd"
-    };
-    challengeDescription.textContent = challenge.description;
-    challengeSolution.textContent = `Solution: ${challenge.solution}`;
-}
-
-revealSolution.addEventListener('click', () => {
-    challengeSolution.hidden = !challengeSolution.hidden;
-    revealSolution.textContent = challengeSolution.hidden ? 'Reveal Solution' : 'Hide Solution';
-});
-
-loadDailyChallenge();
-
-// Command tester
-const testArea = document.getElementById('testArea');
-const testCommand = document.getElementById('testCommand');
-const testResult = document.getElementById('testResult');
-
-testCommand.addEventListener('click', () => {
-    const command = testArea.value.trim();
-    const knownCommand = vimCommands.find(cmd => cmd.name === command);
-    if (knownCommand) {
-        testResult.textContent = `Command '${command}': ${knownCommand.description}`;
-    } else {
-        testResult.textContent = `Simulated result of '${command}': Command executed`;
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
     }
-});
 
-// Language selection (simplified)
-const languageSelect = document.getElementById('languageSelect');
-languageSelect.addEventListener('change', (event) => {
-    const lang = event.target.value;
-    // In a real app, this would change the language of the entire site
-    console.log(`Language changed to ${lang}`);
-    // You would typically load new language strings here
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredCommands = vimCommands.filter(cmd => 
+            cmd.name.toLowerCase().includes(searchTerm) || 
+            cmd.description.toLowerCase().includes(searchTerm) ||
+            cmd.category.toLowerCase().includes(searchTerm)
+        );
+        displayCommands(filteredCommands);
+    });
 });
 
 // Service Worker for PWA
