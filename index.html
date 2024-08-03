@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VimLeap - Master Vim Commands</title>
+    <title>VimLeap - Beginner-Friendly Vim Cheat Sheet</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="VimLeap: Leap forward in your Vim skills. A comprehensive Vim cheat sheet for developers.">
+    <meta name="description" content="VimLeap: A beginner-friendly Vim cheat sheet. Learn Vim commands and how to get started with Vim.">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
         <h1>VimLeap</h1>
-        <p>Leap forward in your Vim skills</p>
+        <p>Your beginner-friendly guide to Vim</p>
         <nav>
             <button id="darkModeToggle" aria-label="Toggle Dark Mode">🌓</button>
-            <select id="languageSelect" aria-label="Select Language">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-            </select>
+            <button id="viewToggle">Toggle View</button>
         </nav>
     </header>
 
     <main>
+        <section id="newbieGuide">
+            <h2>New to Vim?</h2>
+            <p>Welcome to Vim! Here are some tips to get you started:</p>
+            <ul>
+                <li>To enter command mode in Vim, press <strong>Esc</strong>, then type a colon <strong>:</strong></li>
+                <li>To exit Vim, enter command mode and type <strong>:q</strong> (or <strong>:q!</strong> to exit without saving)</li>
+                <li>Don't worry if it feels confusing at first. Vim has a learning curve, but it's worth it!</li>
+            </ul>
+        </section>
+
         <section id="search">
             <input type="text" id="searchInput" placeholder="Search Vim commands..." aria-label="Search Vim commands">
         </section>
@@ -30,6 +37,12 @@
         <section id="commandList">
             <h2>Vim Commands</h2>
             <div id="commandResults"></div>
+        </section>
+
+        <section id="about">
+            <h2>About VimLeap</h2>
+            <p>VimLeap is a beginner-friendly Vim cheat sheet designed to help newcomers get started with Vim. We aim to make learning Vim less intimidating and more accessible.</p>
+            <p>Have suggestions or feedback? Email us at: <a href="mailto:your.email@example.com">emah84@gmail.com</a></p>
         </section>
     </main>
 
