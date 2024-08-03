@@ -1,0 +1,44 @@
+{
+    "name": "VimLeap - Master Vim Commands",
+    "short_name": "VimLeap",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4A90E2",
+    "description": "Leap forward in your Vim skills with interactive examples and daily challenges.",
+    "icons": [
+        {
+            "src": "icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["education", "productivity", "utilities"],
+    "lang": "en-US",
+    "dir": "ltr",
+    "orientation": "any",
+    "scope": "/",
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "shortcuts": [
+        {
+            "name": "Daily Challenge",
+            "short_name": "Challenge",
+            "description": "Take today's Vim challenge",
+            "url": "/#dailyChallenge",
+            "icons": [{ "src": "icon-192x192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Command Tester",
+            "short_name": "Tester",
+            "description": "Test Vim commands",
+            "url": "/#commandTester",
+            "icons": [{ "src": "icon-192x192.png", "sizes": "192x192" }]
+        }
+    ]
+}
