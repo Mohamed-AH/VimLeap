@@ -229,38 +229,45 @@ footer {
     }
 
     .list-view .category-group table,
-    .list-view .category-group thead,
-    .list-view .category-group tbody,
-    .list-view .category-group th,
-    .list-view .category-group td,
-    .list-view .category-group tr {
+    .list-view .category-group tbody {
         display: block;
     }
 
-    .list-view .category-group thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
+    .list-view .category-group thead {
+        display: none;
     }
 
     .list-view .category-group tr {
+        display: block;
         margin-bottom: 0.5rem;
+        border: 1px solid var(--secondary-color);
+        border-radius: 4px;
     }
 
     .list-view .category-group td {
-        border: none;
-        position: relative;
+        display: block;
+        text-align: right;
         padding-left: 50%;
+        position: relative;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    .list-view .category-group td:before {
+    .list-view .category-group td:last-child {
+        border-bottom: none;
+    }
+
+    .list-view .category-group td::before {
+        content: attr(data-label);
         position: absolute;
-        top: 6px;
         left: 6px;
         width: 45%;
         padding-right: 10px;
         white-space: nowrap;
-        content: attr(data-label);
+        text-align: left;
         font-weight: bold;
+    }
+
+    .command-card {
+        margin-bottom: 1rem;
     }
 }
