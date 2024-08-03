@@ -44,36 +44,41 @@ main {
     margin: 0 auto;
 }
 
-section {
-    margin-bottom: 2rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-input, textarea, button, select {
+#searchInput {
+    width: 100%;
+    padding: 0.5rem;
     font-size: 1rem;
     margin-bottom: 1rem;
-    padding: 0.5rem;
     border: 1px solid var(--primary-color);
     border-radius: 4px;
 }
 
-button {
-    background-color: var(--primary-color);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+#commandResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
 }
 
-button:hover {
-    background-color: var(--secondary-color);
+.command-card {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.command-name {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.command-description {
+    margin-top: 0.5rem;
+}
+
+.command-category {
+    font-style: italic;
+    color: var(--accent-color);
+    margin-top: 0.5rem;
 }
 
 footer {
@@ -83,34 +88,21 @@ footer {
     color: white;
 }
 
-footer nav a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
 .dark-mode {
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
 }
 
-#searchInput {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#searchResults p {
-    padding: 0.5rem;
-    border-bottom: 1px solid var(--secondary-color);
-}
-
-#testArea {
-    width: 100%;
-    box-sizing: border-box;
+.dark-mode .command-card {
+    background-color: #2a2a2a;
 }
 
 @media (max-width: 600px) {
     main {
         padding: 1rem;
+    }
+    
+    #commandResults {
+        grid-template-columns: 1fr;
     }
 }
