@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VimLeap - Master Vim Commands</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="VimLeap: Leap forward in your Vim skills. A comprehensive Vim cheat sheet with interactive examples and daily challenges for developers.">
+    <meta name="description" content="VimLeap: Leap forward in your Vim skills. A comprehensive Vim cheat sheet for developers.">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -25,36 +25,16 @@
     <main>
         <section id="search">
             <input type="text" id="searchInput" placeholder="Search Vim commands..." aria-label="Search Vim commands">
-            <div id="searchResults" aria-live="polite"></div>
         </section>
 
-        <section id="categories">
-            <h2>Categories</h2>
-            <ul id="categoryList"></ul>
-        </section>
-
-        <section id="dailyChallenge">
-            <h2>Daily Vim Challenge</h2>
-            <p id="challengeDescription"></p>
-            <button id="revealSolution">Reveal Solution</button>
-            <p id="challengeSolution" hidden></p>
-        </section>
-
-        <section id="commandTester">
-            <h2>Vim Command Tester</h2>
-            <textarea id="testArea" rows="5" cols="50" aria-label="Test your Vim commands here"></textarea>
-            <button id="testCommand">Test Command</button>
-            <p id="testResult" aria-live="polite"></p>
+        <section id="commandList">
+            <h2>Vim Commands</h2>
+            <div id="commandResults"></div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2024 VimLeap. All rights reserved.</p>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
-        </nav>
     </footer>
 
     <script src="script.js"></script>
