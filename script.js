@@ -76,7 +76,7 @@ const vimCommands = [
     { name: 'gT or :tabprev', description: 'Move to the previous tab', category: 'Tabs' },
 
     // File operations
-    { name: ':w', description: 'Write (save) the file, but don't exit', category: 'File Operations' },
+    { name: ':w', description: 'Write (save) the file, but do not exit', category: 'File Operations' },
     { name: ':w !sudo tee %', description: 'Write out the current file using sudo', category: 'File Operations' },
     { name: ':wq or :x or ZZ', description: 'Write (save) and quit', category: 'File Operations' },
     { name: ':q', description: 'Quit (fails if there are unsaved changes)', category: 'File Operations' },
