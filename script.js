@@ -170,6 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         displayCommands(filteredCommands, isListView);
     });
+
+    // Handle resize events
+    window.addEventListener('resize', updateView);
 });
 
 // Service Worker for PWA
